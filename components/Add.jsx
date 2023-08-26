@@ -36,6 +36,9 @@ const Add = ({ setClose }) => {
       );
 
       const { url } = uploadRes.data;
+
+      const baseUrl = process.env.REACT_APP_API_URL;
+
       const newProduct = {
         title,
         desc,
@@ -44,7 +47,7 @@ const Add = ({ setClose }) => {
         img: url,
       };
 
-      await axios.post("/api/products", newProduct);
+      await axios.post(`${baseUrl}/api/products`, newProduct);
       setClose(true);
     } catch (err) {
       console.log(err);

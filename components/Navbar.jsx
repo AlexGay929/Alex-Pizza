@@ -16,7 +16,7 @@ const Navbar = () => {
           <div className={styles.text}>999 999</div>
         </div>
       </div>
-      <div className={styles.item}>
+      <div className={styles.centeredItem}>
         <ul className={styles.list}>
           <Link href="/" passHref>
             <li className={styles.listItem}>Homepage</li>

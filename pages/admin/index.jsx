@@ -10,9 +10,12 @@ const Index = ({ orders, products }) => {
 
   const handleDelete = async (id) => {
     console.log(id);
+
+    const baseUrl = process.env.REACT_APP_API_URL;
+
     try {
       const res = await axios.delete(
-        "http://localhost:3000/api/products/" + id
+        `${baseUrl}/api/products` + id
       );
       setPizzaList(pizzaList.filter((pizza) => pizza._id !== id));
     } catch (err) {
@@ -24,8 +27,10 @@ const Index = ({ orders, products }) => {
     const item = orderList.filter((order) => order._id === id)[0];
     const currentStatus = item.status;
 
+    const baseUrl = process.env.REACT_APP_API_URL;
+
     try {
-      const res = await axios.put("http://localhost:3000/api/orders/" + id, {
+      const res = await axios.put(`${baseUrl}/api/orders` + id, {
         status: currentStatus + 1,
       });
       setOrderList([
@@ -120,6 +125,8 @@ const Index = ({ orders, products }) => {
 export const getServerSideProps = async (ctx) => {
   const myCookie = ctx.req?.cookies || "";
 
+  const baseUrl = process.env.REACT_APP_API_URL;
+
   if (myCookie.token !== process.env.TOKEN) {
     return {
       redirect: {
@@ -129,8 +136,8 @@ export const getServerSideProps = async (ctx) => {
     };
   }
 
-  const productRes = await axios.get("http://localhost:3000/api/products");
-  const orderRes = await axios.get("http://localhost:3000/api/orders");
+  const productRes = await axios.get(`${baseUrl}/api/products`);
+  const orderRes = await axios.get(`${baseUrl}/api/orders`);
 
   return {
     props: {

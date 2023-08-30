@@ -29,7 +29,7 @@ export const getServerSideProps = async (ctx) => {
   const myCookie = ctx.req?.cookies || "";
   let admin = false;
 
-  if (myCookie.token === process.env.TOKEN) {
+  if (myCookie.token === process.env.MY_TOKEN) {
     admin = true;
   }
 

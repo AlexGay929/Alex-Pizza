@@ -123,7 +123,7 @@ export const getServerSideProps = async (ctx) => {
 
   const baseUrl = process.env.REACT_APP_API_URL;
 
-  if (myCookie.token !== process.env.TOKEN) {
+  if (myCookie.token !== process.env.MY_TOKEN) {
     return {
       redirect: {
         destination: "/admin/login",

@@ -11,13 +11,9 @@ const Index = ({ orders, products }) => {
   const handleDelete = async (id) => {
     console.log(id);
 
-    const baseUrl = process.env.REACT_APP_API_URL;
-
-    console.log("API URL:", process.env.REACT_APP_API_URL);
-
     try {
       const res = await axios.delete(
-        `${baseUrl}/api/products/${id}`
+        `/api/products/${id}`
       );
       setPizzaList(pizzaList.filter((pizza) => pizza._id !== id));
     } catch (err) {
@@ -29,10 +25,8 @@ const Index = ({ orders, products }) => {
     const item = orderList.filter((order) => order._id === id)[0];
     const currentStatus = item.status;
 
-    const baseUrl = process.env.REACT_APP_API_URL;
-
     try {
-      const res = await axios.put(`${baseUrl}/api/orders/${id}`, {
+      const res = await axios.put(`/api/orders/${id}`, {
         status: currentStatus + 1,
       });
       setOrderList([

@@ -37,7 +37,8 @@ const Add = ({ setClose }) => {
 
       const { url } = uploadRes.data;
 
-      const baseUrl = process.env.REACT_APP_API_URL;
+      const baseUrl =  process.env.REACT_APP_API_URL;
+      console.log("API URL:", baseUrl);
 
       const newProduct = {
         title,
@@ -47,7 +48,7 @@ const Add = ({ setClose }) => {
         img: url,
       };
 
-      await axios.post(`${baseUrl}/api/products`, newProduct);
+      await axios.post("https://alex-pizza-two.vercel.app/api/products", newProduct);
       setClose(true);
     } catch (err) {
       console.log(err);

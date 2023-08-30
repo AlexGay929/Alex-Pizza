@@ -13,9 +13,11 @@ const Index = ({ orders, products }) => {
 
     const baseUrl = process.env.REACT_APP_API_URL;
 
+    console.log("API URL:", process.env.REACT_APP_API_URL);
+
     try {
       const res = await axios.delete(
-        `${baseUrl}/api/products` + id
+        `${baseUrl}/api/products/${id}`
       );
       setPizzaList(pizzaList.filter((pizza) => pizza._id !== id));
     } catch (err) {
@@ -30,7 +32,7 @@ const Index = ({ orders, products }) => {
     const baseUrl = process.env.REACT_APP_API_URL;
 
     try {
-      const res = await axios.put(`${baseUrl}/api/orders` + id, {
+      const res = await axios.put(`${baseUrl}/api/orders/${id}`, {
         status: currentStatus + 1,
       });
       setOrderList([

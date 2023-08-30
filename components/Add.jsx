@@ -37,9 +37,6 @@ const Add = ({ setClose }) => {
 
       const { url } = uploadRes.data;
 
-      const baseUrl =  process.env.REACT_APP_API_URL;
-      console.log("API URL:", baseUrl);
-
       const newProduct = {
         title,
         desc,

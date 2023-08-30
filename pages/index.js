@@ -33,9 +33,7 @@ export const getServerSideProps = async (ctx) => {
     admin = true;
   }
 
-  const baseUrl = process.env.REACT_APP_API_URL;
-
-  const res = await axios.get(`${baseUrl}/api/products`);
+  const res = await axios.get("https://alex-pizza-two.vercel.app/api/products");
   return {
     props: {
       pizzaList: res.data,

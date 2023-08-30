@@ -121,8 +121,6 @@ const Index = ({ orders, products }) => {
 export const getServerSideProps = async (ctx) => {
   const myCookie = ctx.req?.cookies || "";
 
-  const baseUrl = process.env.REACT_APP_API_URL;
-
   if (myCookie.token !== process.env.MY_TOKEN) {
     return {
       redirect: {
@@ -132,8 +130,8 @@ export const getServerSideProps = async (ctx) => {
     };
   }
 
-  const productRes = await axios.get(`${baseUrl}/api/products`);
-  const orderRes = await axios.get(`${baseUrl}/api/orders`);
+  const productRes = await axios.get("https://alex-pizza-two.vercel.app/api/products");
+  const orderRes = await axios.get("https://alex-pizza-two.vercel.app/api/orders");
 
   return {
     props: {

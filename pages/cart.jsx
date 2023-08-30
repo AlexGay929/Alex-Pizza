@@ -23,9 +23,9 @@ const Cart = () => {
   const router = useRouter();
 
   const createOrder = async (data) => {
-    const baseUrl = process.env.REACT_APP_API_URL;
+
     try {
-      const res = await axios.post(`${baseUrl}/api/orders`, data);
+      const res = await axios.post("https://alex-pizza-two.vercel.app/api/orders", data);
       if (res.status === 201) {
         dispatch(reset());
         router.push(`/orders/${res.data._id}`);

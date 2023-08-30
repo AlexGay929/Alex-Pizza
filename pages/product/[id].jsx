@@ -7,8 +7,6 @@ import { addProduct } from "../../redux/cartSlice";
 
 const Product = ({ pizza }) => {
 
-  console.log("Received Pizza Prop:", pizza);
-
   const [price, setPrice] = useState(pizza.prices[0]);
   const [size, setSize] = useState(0);
   const [quantity, setQuantity] = useState(1);
@@ -100,10 +98,8 @@ const Product = ({ pizza }) => {
 
 export const getServerSideProps = async ({ params }) => {
 
-  const baseUrl = process.env.REACT_APP_API_URL;
-
   const res = await axios.get(
-    `${baseUrl}/api/products/${params.id}`
+    `https://alex-pizza-two.vercel.app/api/products/${params.id}`
   );
   
   return {

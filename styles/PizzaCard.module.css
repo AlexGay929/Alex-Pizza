@@ -35,7 +35,12 @@
     .title {
       font-size: 30px;
     }
-  
+    
+    .image {
+      width: 350px;
+      height: 250px;
+    }
+
     .price,
     .desc {
       font-size: 24px;

@@ -28,6 +28,17 @@ const handler = async (req, res) => {
     }
   }
   if (method === "DELETE") {
+    try {
+      const order = await Order.findByIdAndDelete(id);
+      
+      if (!order) {
+        return res.status(404).json({ message: "Order not found" });
+      }
+      
+      res.status(200).json(order);
+    } catch (err) {
+      res.status(500).json(err);
+    }
   }
 };
 
